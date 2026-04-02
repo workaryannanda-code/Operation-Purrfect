@@ -21,11 +21,11 @@ export const reveals: Reveal[] = [
   {
     step: 2,
     unlockIST: "2026-04-03T00:00:00+05:30",
-    title: "Step 2: The Fairy Tale Begins 🧁",
+    title: "Step 2: Pick Your Café ✨",
     teaserText: "Step 2 is fancy. You might want to plan an outfit... 👀",
     gifUrl: "https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif",
-    message: `You deserve a fairy tale. So I found one — literally.\n\nFairytales Café, Dwarka. A place that sounds exactly like something you'd love, because it is. Come hungry, come happy, and let me take you somewhere a little magical.\n\nOne year of us deserves a place named after fairy tales. The cat approves of this venue. High paw rating. 🐱✨`,
-    activityHint: "🧁 A café that sounds like it was named after you.",
+    message: `You deserve a fairy tale. So I found five — literally.\n\nYou get to pick the café, Tanvi. Here are your options:\n\n1. Café Wink\n2. Café Dori\n3. Diggin\n4. Café Tesu\n5. Café Vagabond\n\nJust tell me which one, and I'll take you somewhere a little magical. Come hungry, come happy.\n\nThe cat approves of all these venues. High paw rating across the board. 🐱✨`,
+    activityHint: "🧁 Pick your café. 5 options. Your call.",
   },
   {
     step: 3,
