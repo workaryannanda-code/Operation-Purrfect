@@ -34,10 +34,10 @@ function PoppingCats() {
   const [nextId, setNextId] = useState(0);
 
   useEffect(() => {
-    const emojis = ["🐱", "🐈", "😺", "😸", "🐾", "😻", "🙀", "😽"];
+    const emojis = ["🐱", "🐾"];
 
     const scheduleNext = () => {
-      const delay = 3000 + Math.random() * 7000;
+      const delay = 15000 + Math.random() * 20000;
       const timer = setTimeout(() => {
         const newCat: PoppingCat = {
           id: nextId,
@@ -50,7 +50,7 @@ function PoppingCats() {
 
         setTimeout(() => {
           setCats((prev) => prev.filter((c) => c.id !== newCat.id));
-        }, 2000);
+        }, 1500);
 
         scheduleNext();
       }, delay);
