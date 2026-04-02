@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Lora, DM_Mono } from "next/font/google";
 import "./globals.css";
+import FloatingCats from "@/components/FloatingCats";
 
 const displayFont = Playfair_Display({
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function RootLayout({
         <div className="floating-paw">🐾</div>
         <div className="floating-paw">🐾</div>
         <div className="floating-paw">🐾</div>
+        <FloatingCats />
         {children}
       </body>
     </html>

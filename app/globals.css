@@ -79,3 +79,54 @@ html, body {
   overflow-x: hidden;
   max-width: 100vw;
 }
+
+/* Floating cats */
+.floating-cats-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floating-cat {
+  position: absolute;
+  bottom: -60px;
+  animation: cat-float-up linear forwards, cat-wobble 2s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes cat-float-up {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  92% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes cat-wobble {
+  0%, 100% {
+    margin-left: 0;
+  }
+  25% {
+    margin-left: 12px;
+  }
+  75% {
+    margin-left: -12px;
+  }
+}
