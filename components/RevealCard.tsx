@@ -136,24 +136,6 @@ export default function RevealCard({ reveal, index }: RevealCardProps) {
     >
       <Confetti ref={confettiRef} />
 
-      {reveal.step === 5 && unlocked && gameWon && (
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 15,
-            delay: 0.3,
-          }}
-          className="text-center mb-4 py-3 px-4 rounded-2xl bg-accent-secondary"
-        >
-          <span className="font-display text-xl md:text-2xl text-text-primary font-bold">
-            Happy Anniversary, Tanvi! 💕
-          </span>
-        </motion.div>
-      )}
-
       {!unlocked ? (
         <div className="relative rounded-2xl overflow-hidden border-2 border-dashed border-locked-bg mb-5">
           <div

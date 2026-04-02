@@ -6,22 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { reveals } from "@/app/lib/reveals";
 import RevealCard from "@/components/RevealCard";
 
-function getDaysUntilAnniversary(): number {
-  const now = new Date();
-  const april11 = new Date(now.getFullYear(), 3, 11);
-  if (now >= april11) {
-    return 0;
-  }
-  return Math.ceil(
-    (april11.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)
-  );
-}
-
-function isAnniversaryToday(): boolean {
-  const now = new Date();
-  return now.getMonth() === 3 && now.getDate() === 11;
-}
-
 interface PoppingCat {
   id: number;
   side: "left" | "right";
@@ -95,60 +79,57 @@ function PoppingCats() {
   );
 }
 
-export default function MysteryPage() {
+export default function PreviewPage() {
   const router = useRouter();
-  const [authorized, setAuthorized] = useState(false);
-  const [daysLeft, setDaysLeft] = useState(getDaysUntilAnniversary());
 
   useEffect(() => {
-    const auth = localStorage.getItem("tanvi_auth");
-    if (auth !== "true") {
-      router.replace("/");
-    } else {
-      setAuthorized(true);
-    }
-  }, [router]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDaysLeft(getDaysUntilAnniversary());
-    }, 60000);
-    return () => clearInterval(interval);
+    localStorage.setItem("tanvi_auth", "true");
   }, []);
 
-  if (!authorized) return null;
-
-  const anniversaryDay = isAnniversaryToday();
+  const previewReveals = reveals.map((reveal) => ({
+    ...reveal,
+    unlockIST: "2020-01-01T00:00:00+05:30",
+  }));
 
   return (
     <div className="min-h-screen relative z-10">
       <header className="sticky top-0 z-20 bg-bg-primary/90 backdrop-blur-sm border-b border-bg-secondary px-4 py-3">
         <div className="max-w-[480px] mx-auto flex items-center justify-between">
-          <h1 className="font-display text-lg md:text-xl text-accent-primary font-bold">
-            One year of us 🐱
-          </h1>
-          <span className="inline-flex items-center px-3 py-1 rounded-full bg-accent-secondary text-text-primary font-mono text-xs font-medium whitespace-nowrap">
-            {anniversaryDay
-              ? "💕 It's our day!"
-              : daysLeft > 0
-                ? `${daysLeft}d to go`
-                : "🐾"}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => router.push("/")}
+              className="px-3 py-1 rounded-full bg-bg-secondary text-text-primary font-mono text-xs hover:bg-accent-primary hover:text-white transition-colors"
+            >
+              ← Home
+            </button>
+            <h1 className="font-display text-lg md:text-xl text-accent-primary font-bold">
+              Preview Mode 🧪
+            </h1>
+          </div>
+          <span className="inline-flex items-center px-3 py-1 rounded-full bg-accent-secondary text-text-primary font-mono text-xs font-medium">
+            All cards unlocked
           </span>
         </div>
       </header>
 
       <main className="max-w-[480px] mx-auto px-4 py-6">
-        {reveals.map((reveal, index) => (
+        <div className="mb-6 p-4 rounded-xl bg-accent-primary/10 border border-accent-primary/20">
+          <p className="font-mono text-sm text-text-primary">
+            This is a preview page. All cards are unlocked for testing. No time restrictions apply.
+          </p>
+        </div>
+
+        {previewReveals.map((reveal, index) => (
           <RevealCard key={reveal.step} reveal={reveal} index={index} />
         ))}
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
+          transition={{ delay: 0.5 }}
           className="text-center font-body text-text-secondary text-sm mt-6 pb-8"
         >
-          Each card unlocks on its special day. Check back daily! 🐾
+          Preview mode — all {reveals.length} cards unlocked for testing 🐾
         </motion.p>
 
         <motion.div

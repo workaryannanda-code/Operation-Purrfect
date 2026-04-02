@@ -23,7 +23,7 @@ const monoFont = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "🐾 Something Special for Tanvi",
+  title: "🐾 Something Special for Tannu",
   description: "A little mystery. A little magic. Open it.",
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>",
